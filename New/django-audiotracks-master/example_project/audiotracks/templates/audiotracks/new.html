@@ -1,0 +1,37 @@
+{% extends "audiotracks/base.html" %}
+{% load i18n %}
+
+{% block body %}
+
+<div class="content_top">
+                <div class="heading">
+                    <h3>Upload Products</h3>
+                    <span>_____________________________________________</span>
+                </div>
+                 <div class="clear"></div>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                </br>
+                
+                <div class="clear"></div>
+                <div class="clear"></div>
+                <div class="clear"></div>
+                <div class="clear"></div>
+                {% if user.is_authenticated %}
+<form class="audiotracks-form" id="audiotracks-upload-form" 
+      method="POST" enctype="multipart/form-data" action="{% url 'upload_track' %}">
+  {% csrf_token %}
+  <fieldset>
+    {{ form.as_p }}
+  </fieldset>
+  <p>
+  <button class="btn primary">{% trans 'Upload' %}</button>
+  </p>
+</form>
+{% endif %}
+<div class="clear"></div>
+</div>
+
+{% endblock %}

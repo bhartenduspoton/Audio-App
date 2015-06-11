@@ -1,0 +1,38 @@
+{% if page.paginator.num_pages > 1 %}
+
+  <ul>
+    {% if page.has_previous %}
+    <li>
+        {% if search_text %}
+            <a href="{{ base_path }}/{{ page.previous_page_number }}?search_text={{ search_text }}">&larr;</a>
+        {% else %}
+            <a href="{{ base_path }}/{{ page.previous_page_number }}">&larr;</a>
+        {% endif %}
+    </li>
+    {% endif %}
+
+    {% for page_number in page.paginator.page_range %}
+    <li {% if page.number == page_number %}class="active"{% endif %}>
+      
+        {% if search_text %}
+            <a href="{{ base_path }}/{{ page_number }}?search_text={{ search_text }}">{{ page_number }}</a>
+        {% else %}
+            <a href="{{ base_path }}/{{ page_number }}">{{ page_number }}</a>
+        {% endif %}
+    </li>
+    {% endfor %}
+
+    {% if page.has_next %}
+    <li>
+            
+            {% if search_text %}
+            <a href="{{ base_path }}/{{ page.next_page_number }}?search_text={{ search_text }}">&rarr;</a>
+            {% else %}
+            <a href="{{ base_path }}/{{ page.next_page_number }}">&rarr;</a>
+            {% endif %}
+    </li>
+    {% endif %}
+  </ul>
+
+
+{% endif %}

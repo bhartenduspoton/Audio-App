@@ -1,0 +1,36 @@
+{% extends "audiotracks/mediaelement_base.html" %}
+{% load i18n %}
+
+{% block body %}
+<h1>
+  
+  <div class="content_top">
+                <div class="heading">
+                    <h3>Uploaded Tracks</h3>
+                </div>
+                <div class="search-bar">
+                <form action="{% url 'user_index' user.username %}" method="get">
+                <ul>
+                  <li><input type="text" name="search_text" value="{{ search_text }}"></li>
+               
+                </ul>
+                </form>
+                </div>
+                <div class="page-no">
+                    <p>Result Pages:</p>
+                 {% include '_pagination.html' %}
+                 <p></p>
+                </div>
+                <div class="clear"></div>
+
+</div>
+
+</h1>
+<ul class="audiotracks-list">
+{% for track in tracks %}
+    {% include "audiotracks/listing_item.html" %}
+{% endfor %}
+</ul>
+
+
+{% endblock %}

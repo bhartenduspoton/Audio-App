@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="content_top">
+                <div class="heading">
+                    <h3>Audio Tracks</h3>
+                </div>
+                <div class="page-no">
+                    <p>Result Pages:</p><ul>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li>[<a href="#"> Next&gt;&gt;&gt;</a>]</li>
+                        </ul><p></p>
+                </div>
+                <div class="search-bar">
+                    <ul>
+                      <li><input type="text"></li>
+                      <input name="searchsubmit" type="image" src="{{ STATIC_URL }}images/search-icon.png" value="Go" id="searchsubmit" class="btn">
+                      </ul>
+                </div>
+                <div class="clear"></div>
+</div>
+{% endblock %}
+
+
+{% block banner %}
+<div id="wrapper">
+    <div class="slider-wrapper theme-default">
+            <div id="slider" class="nivoSlider">
+                <img src="{{ STATIC_URL }}images/banner1.jpg"  alt="" />
+                <img src="{{ STATIC_URL }}images/banner2.jpg"  alt="" />
+                <img src="{{ STATIC_URL }}images/banner3.jpg"  alt="" />
+            </div>
+        </div>
+ </div>
+{% endblock %}
+
+
+{% block transparent %}
+<div class="image_carousel">
+             
+                            <div id="foo1">
+                                <img src="{{ STATIC_URL }}images/pic.jpg" alt="basketball" width="135" height="120" />
+                                <img src="{{ STATIC_URL }}images/pic1.jpg" alt="beachtree"  width="135" height="120" />
+                                <img src="{{ STATIC_URL }}images/pic2.jpg" alt="cupcackes" width="135" height="120" />
+                                <img src="{{ STATIC_URL }}images/pic3.jpg" alt="hangmat"  width="135" height="120" />
+                                <img src="{{ STATIC_URL }}images/pic4.jpg" alt="new york"  width="130" height="120" />
+                                <img src="{{ STATIC_URL }}images/pic5.jpg" alt="laundry"  width="130" height="120" />
+                                <img src="{{ STATIC_URL }}images/pic6.jpg" alt="mom son"  width="130" height="120" />
+                                <img src="{{ STATIC_URL }}images/pic7.jpg" alt="picknick"  width="130" height="120" />
+                                <img src="{{ STATIC_URL }}images/pic8.jpg" alt="shoes"  width="130" height="120" />
+                                <img src="{{ STATIC_URL }}images/pic9.jpg" alt="paris"  width="130" height="120" />
+                                <img src="{{ STATIC_URL }}images/pic10.jpg" alt="sunbading"   width="130" height="120"/>
+                            </div>
+                    </div>
+{% endblock %}

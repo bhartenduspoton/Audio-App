@@ -1,0 +1,118 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load i18n %} 
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Free Rock-On Website Template | Home :: w3layouts</title>
+<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="{{ STATIC_URL }}css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ STATIC_URL }}css/style_1.css" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ STATIC_URL }}css/nivo-slider.css" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ STATIC_URL }}django_facebook/css/facebook.css" type="text/css" rel="stylesheet" media="all" />
+<script src="{{ STATIC_URL }}js/jquery-1.9.0.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.nivo.slider.js"></script>
+    <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>
+<!-- thumbs -->
+<script src="{{ STATIC_URL }}js/home.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.carouFredSel-6.0.5-packed.js"></script>
+  <script type="text/javascript">
+       $("#foo1").carouFredSel();
+    </script>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+<div class="wrap">
+    <div class="header">
+    <div class="header-top">
+      <div class="search-bar">
+        <ul>
+          <li><input type="text"></li>
+          <input name="searchsubmit" type="image" src="{{ STATIC_URL }}images/search-icon.png" value="Go" id="searchsubmit" class="btn">
+          </ul>
+      </div>
+      <div class="clear"></div> 
+    </div>
+    <div class="header-bot">
+      <div class="logo">
+        <a href="index.html"><img src="{{ STATIC_URL }}images/logo.png" alt=""/></a>
+      </div>
+      <div class="top-nav">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+           <li><a href="{% url 'audiotracks' %}">Audio tracks</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'user_index' user.username %}">{% trans 'Your tracks' %}</a></li>
+                <li><a href="{% url 'upload_track' %}">{% trans 'Upload track' %}</a></li>
+                {% if user.is_staff %}<li><a href="/admin">Admin</a></li>{% endif %}
+                <li><a <a href="{% url 'auth_logout' %}?next={{ request.path|urlencode }}">logout</a></li>
+            {% endif %}
+        </ul>
+       
+      </div>
+      <div class="clear"></div> 
+    </div>
+<div class="banner">
+    {% block banner %}{% endblock %}
+</div>
+</div>
+<div class="main">
+    <div class="main-top">
+      <div class="transparent p1">
+            {% block transparent %}{% endblock %}
+      </div>
+
+        {% block body %}{% endblock %}
+        {% block extra_body %}{% endblock %}
+      </div>
+     
+    <div class="footer-bottom">
+    
+      <div class="social">
+        {% if not user.is_authenticated %}
+        <div class="inner_content">
+
+            <!--form to call registration via facebook -->
+            <form action="{% url 'facebook_connect' %}?facebook_login=1"  method="post">
+                {% csrf_token %}
+                <input type="hidden" value="{{ request.path }}" name="next" />
+                 <input type="hidden" value="{{ request.path }}" name="register_next" />
+                <input type="hidden" value="{{ request.path }}" name="error_next" />
+                <!--
+                use error next for a seperate error page
+                <input type="hidden" value="/error/" name="error_next" />
+                -->
+                <div id="facebook_login_js">
+                <input onclick="F.connect(this.parentNode.parentNode); return false;" type="image" src="{{ STATIC_URL }}django_facebook/images/facebook_login.png" />
+               
+                </div>
+                <br /><br />
+                </form>
+
+        </div>
+       {% endif %}
+      </div>
+
+        <div class="copy">
+        <p>All rights Reserved | Design by <a href="http://w3layouts.com">W3Layouts</a></p>
+      </div>
+      <div class="clear"></div> 
+   </div>
+  </div>
+ </div>
+</body>
+</html>
+
+      
+      
+            
